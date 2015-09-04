@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>诚客兼职</title>
+    <!--IE最新版本渲染-->
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+
+    <!--IOS全屏-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--IOS顶端样式条-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!--忽略数字称为电话号码-->
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="stylesheet" href="materialize/css/materialize.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="header lighten-3" >
+    <div class="row" style="height:101px;">
+        <div class="col s12">
+            <img src="img/us.png" alt="诚客兼职，一呼百应" />
+            <P>渝高校就业信息</P>
+        </div>
+    </div>
+    <ul class="collection">
+    </ul>
+    </div>
+</div>
+
+<!--<iframe src="http://121.42.151.165:8080/getdata?uni=0&page=1" style="display:none;"></iframe>-->
+
+<script type="text/javascript" src="script/lib/jquery.min.js"></script>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="materialize/js/init.js"></script>
+<script type="text/javascript" src="script/queryString.js"></script>
+<script type="text/javasscript" src="script/loadjs.js"></script>
+<script type="text/javascript" src="script/loadlist.js"></script>
+<script>
+    window.uni = GetQueryString('uni');
+    init(uni);//加载脚本
+    window.onload = function(){
+        getInfo();
+    }
+    function getTime(date){
+        var time = date.split(' ');
+        return time[0];
+    }
+    function init(uni){
+        var myScript = document.createElement('script');
+        myScript.type = "text/javascript";
+        console.log(uni);
+        switch(uni){
+            case "0":
+                myScript.src = 'script/cqupt/cqupt.js';
+                break;
+            case "1":
+                myScript.src = "script/xinan/xinan.js";
+                break;
+            case "2":
+                myScript.src = "script/xnzf/xnzf.js";
+                break;
+            case "3":
+                myScript.src = "script/cqgs/cqgs.js";
+                break;
+            case "4":
+                myScript.src = "script/cqsf/cqsf.js";
+                break;
+            case "5":
+                myScript.src = "script/cqyk/cqyk.js";
+                break;
+            case "6":
+                myScript.src = "script/desf/desf.js";
+                break;
+
+        }
+        console.log(myScript.src);
+        document.getElementsByTagName('head')[0].appendChild(myScript);
+    }
+</script>
+</body>
+</html>

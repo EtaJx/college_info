@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>诚客兼职</title>
+    <!--IE最新版本渲染-->
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+
+    <!--IOS全屏-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--IOS顶端样式条-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!--忽略数字称为电话号码-->
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="stylesheet" href="materialize/css/materialize.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<style>
+    html{
+        overflow-y:hidden;
+    }
+    iframe{
+        border:0;
+        width:100px;
+    }
+</style>
+<body>
+<iframe src="" id="loadinfo" scrolling="0"></iframe>
+
+
+<script type="text/javascript" src="script/lib/jquery.min.js"></script>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="materialize/js/init.js"></script>
+<script type="text/javascript" src="script/queryString.js"></script>
+<script>
+    window.uni = GetQueryString('uni');
+    $(function(){
+        var id = GetQueryString('id');
+        $.ajax({
+            url:"http://121.42.151.165:8080",
+            data:{uni:uni,id:id},
+            type:'GET',
+            dataType:'text',
+            success:function(data){
+                window.location = data;
+            },
+            error:function(){
+                alert('加载失败');
+            }
+        });
+    })
+    
+</script>
+</body>
+</html>
